@@ -2,7 +2,12 @@ const cheerio = require("cheerio")
 
 module.exports = (data) => {
     let $, status, trackingURL, imgurl, product;
-    data = data.toString();
+    try{
+        data = data.toString();
+    }
+    catch (e){
+        return;
+    }
     if(data.includes("Sorry")){
         return 1;
     }

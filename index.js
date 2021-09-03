@@ -41,7 +41,7 @@ client.on("interactionCreate", async interaction => {
                     .setTimestamp()
                     .setFooter("Jacob Sewell");
 
-            } else if (finalObj.cancelled) {
+            } else if (finalObj && finalObj.cancelled) {
                 embedMessage = new MessageEmbed()
                     .setColor("#ff0000")
                     .setTitle("Kith Order Status Tracker")
