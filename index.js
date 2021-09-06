@@ -55,32 +55,16 @@ client.on("interactionCreate", async interaction => {
                     .setTimestamp()
                     .setFooter("Jacob Sewell");
 
-            } else if (finalObj.status) {
+            } else if (finalObj) {
                 embedMessage = new MessageEmbed()
-                    .setColor("#2fff00")
+                    .setColor(finalObj.status ? "#2fff00" : "ff7300")
                     .setTitle("Kith Order Status Tracker")
                     .setImage(finalObj.img)
                     .addFields(
                         {name: "Product", value: finalObj.product},
                         {name: "Email", value: webData.email},
-                        {name: "ID", value: webData.id},
-                        {name: "Status", value: finalObj.status},
-                        {name: "Tracking URL", value: `[Click Here](${finalObj.tracking})`}
-                    )
-                    .setTimestamp()
-                    .setFooter("Jacob Sewell");
-            }
-            else if(finalObj){
-                embedMessage = new MessageEmbed()
-                    .setColor("#ff6600")
-                    .setTitle("Kith Order Status Tracker")
-                    .setImage(finalObj.img)
-                    .addFields(
-                        {name: "Product", value: finalObj.product},
-                        {name: "Email", value: webData.email},
-                        {name: "ID", value: webData.id},
-                        {name: "Status", value: "Currently Unknown"},
-                        {name: "Tracking URL", value: `Not avaliable yet`}
+                        {name: "Status", value: finalObj.status ? finalObj.status : "Currently Unknown"},
+                        {name: "Tracking URL", value: finalObj.status ? `[Click Here](${finalObj.tracking})` : "Not currently avaliable"}
                     )
                     .setTimestamp()
                     .setFooter("Jacob Sewell");
