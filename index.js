@@ -55,7 +55,7 @@ client.on("interactionCreate", async interaction => {
                     .setTimestamp()
                     .setFooter("Jacob Sewell");
 
-            } else if (finalObj) {
+            } else if (finalObj.status) {
                 embedMessage = new MessageEmbed()
                     .setColor("#2fff00")
                     .setTitle("Kith Order Status Tracker")
@@ -69,7 +69,23 @@ client.on("interactionCreate", async interaction => {
                     )
                     .setTimestamp()
                     .setFooter("Jacob Sewell");
-            } else {
+            }
+            else if(finalObj){
+                embedMessage = new MessageEmbed()
+                    .setColor("#ff6600")
+                    .setTitle("Kith Order Status Tracker")
+                    .setImage(finalObj.img)
+                    .addFields(
+                        {name: "Product", value: finalObj.product},
+                        {name: "Email", value: webData.email},
+                        {name: "ID", value: webData.id},
+                        {name: "Status", value: "Currently Unknown"},
+                        {name: "Tracking URL", value: `Not avaliable yet`}
+                    )
+                    .setTimestamp()
+                    .setFooter("Jacob Sewell");
+            }
+            else {
                 embedMessage = new MessageEmbed()
                     .setColor("#ff0000")
                     .setTitle("Kith Order Status Tracker")
